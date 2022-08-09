@@ -1,29 +1,31 @@
+/* eslint-env node */
+// require("@rushstack/eslint-patch/modern-module-resolution");
+
 module.exports = {
-  root: true,
-  env: {
-    node: true
-  },
-  extends: [
-    'plugin:vue/vue3-essential',
-    '@vue/standard',
-    '@vue/typescript/recommended'
+  "root": true,
+  "extends": [
+    "plugin:vue/vue3-essential",
+    "eslint:recommended",
+    "@vue/eslint-config-typescript/recommended"
   ],
-  parserOptions: {
-    ecmaVersion: 2020
+  "env": {
+    "vue/setup-compiler-macros": true
   },
-  rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off'
+  "no-inferrable-types": [
+    true,
+    "ignore-params",
+    "ignore-properties"
+  ],
+  "rules" : {
   },
-  overrides: [
+  "overrides": [
     {
-      files: [
-        '**/__tests__/*.{j,t}s?(x)',
-        '**/tests/unit/**/*.spec.{j,t}s?(x)'
+      "files": [
+        "cypress/e2e/**.{cy,spec}.{js,ts,jsx,tsx}"
       ],
-      env: {
-        jest: true
-      }
+      "extends": [
+        "plugin:cypress/recommended"
+      ]
     }
   ]
 }
